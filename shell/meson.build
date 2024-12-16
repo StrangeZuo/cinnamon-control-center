@@ -52,9 +52,10 @@ controlcenter = executable('cinnamon-control-center',
   include_directories: rootInclude,
   dependencies: [
     gtk,
+    gio_unix,
     cinn_menu,
     libx11,
-    libnotify,
+    libnotify
   ],
   link_with: libcinnamon_control_center,
   install: true

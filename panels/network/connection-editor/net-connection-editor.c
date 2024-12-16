@@ -845,7 +845,7 @@ net_connection_editor_new (GtkWindow        *parent_window,
         editor = g_object_new (NET_TYPE_CONNECTION_EDITOR, NULL);
 
         if (parent_window) {
-                editor->parent_window = g_object_ref (parent_window);
+                editor->parent_window = GTK_WIDGET (g_object_ref (parent_window));
                 gtk_window_set_transient_for (GTK_WINDOW (editor->window),
                                               parent_window);
         }
@@ -888,7 +888,7 @@ forgotten_cb (GObject *source_object,
 
         if (!nm_remote_connection_delete_finish (connection, res, &error)) {
                 if (!g_error_matches (error, G_IO_ERROR, G_IO_ERROR_CANCELLED))
-                        g_warning ("Failed to delete conneciton %s: %s",
+                        g_warning ("Failed to delete connection %s: %s",
                                    nm_connection_get_id (NM_CONNECTION (connection)),
                                    error->message);
                 g_error_free (error);

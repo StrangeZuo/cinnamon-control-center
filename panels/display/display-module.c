@@ -18,9 +18,6 @@
  * Author: Thomas Wood <thomas.wood@intel.com>
  *
  */
-
-#include <config.h>
-
 #include "cc-display-panel.h"
 
 #include <glib/gi18n.h>

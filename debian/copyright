@@ -4,64 +4,46 @@ Upstream-Contact: Linux Mint Project <root@linuxmint.com>
 Source: https://github.com/linuxmint/cinnamon-control-center.git
 
 Files: *
-Copyright: 2013, Aleksander Morgado <aleksander@gnu.org>
-           2009, Bastien Nocera
+Copyright: 2004, Alan Cox
+           2013, Aleksander Morgado <aleksander@gnu.org>
            2010-2012, Bastien Nocera <hadess@hadess.net>
-           2012, Canonical
-           2009, Canonical Ltd
-           2012, Conor Curran
-           2011, Conor Curran <conor.curran@canonical.com>
+           2009-2012, Canonical Ltd
+           2011-2012, Conor Curran <conor.curran@canonical.com>
+           Croatian team
            2012, David Henningsson, Canonical Ltd <david.henningsson@canonical.com>
            2007, David Zeuthen <david@fubar.dk>
            2001, Eazel, Inc
            1999-2013, Free Software Foundation, Inc
            2011, Giovanni Campagna <scampa.giovanni@gmail.com>
-           2009-2010, Intel, Inc
+           2003, Hasbullah Bin Pit
+           2009-2013, Intel, Inc
            2006-2008, Lennart Poettering
-           2009-2010, Red Hat, Inc
+           2003, Nikos Charonitakis
            2010-2012, Richard Hughes <richard@hughsie.com>
-           2003-2007, Sergey V Udaltsov
            2003-2007, Sergey V. Udaltsov
+           2004-2005, Sharif FarsiWeb, Inc
            2008, Sjoerd Simons <sjoerd@luon.net>
            2012, Thomas Bechtold <thomasbechtold@jpberlin.de>
            2012, Wacom
-           2008, William Jon McCann
-           2008, William Jon McCann <jmccann@redhat.com>
-           2007, William Jon McCann <mccann@jhu.edu>
-           2008, William Jon McCann <william.jon.mccann@gmail.com>
+           2007-2008, William Jon McCann <jmccann@redhat.com>
            2000-2001, Ximian, Inc
-           2004, Alan Cox
-           Croatian team
-           Free Software Foundation
-           2004-2007, Free Software Foundation Inc
-           2004-2008, Free Software Foundation, Inc
-           2003, Hasbullah Bin Pit
-           2003, Nikos Charonitakis
-           2002, Red Hat Inc
-           2005, Red Hat, Inc
-           2004, RedHat Inc
-           2002-2008, RedHat, Inc
-           2004-2005, Sharif FarsiWeb, Inc
-           2003, The free software foundation, inc
+           2002-2019, RedHat, Inc
 License: GPL-2+
 
-Files: panels/wacom/calibrator/calibrator.c
-       panels/wacom/calibrator/calibrator.h
-       panels/wacom/calibrator/gui_gtk.c
-       panels/wacom/calibrator/gui_gtk.h
-       panels/wacom/calibrator/main.c
+Files: panels/wacom/calibrator/*
 Copyright: 2009, Soren Hauberg
-           2009, Tias Guns
-           2010, Tias Guns <tias@ulyssis.org> and others
+           2009-2010, Tias Guns <tias@ulyssis.org> and others
 License: Expat
 
-Files: panels/display/cc-rr-labeler.c
-       panels/display/cc-rr-labeler.h
-       panels/display/scrollarea.c
-       panels/display/scrollarea.h
+Files: panels/wacom/calibrator/calibrator-gui.c
+       panels/wacom/calibrator/cc-clock.c
+       panels/wacom/calibrator/cc-clock.h
+Copyright: 2013-2018, Red Hat, Inc
+License: GPL-2+
+
+Files: panels/display/cc-display-labeler.c
+       panels/display/cc-display-labeler.h
        panels/network/wireless-security/nm-default.h
-       panels/online-accounts/cc-online-accounts-panel.c
-       panels/online-accounts/cc-online-accounts-panel.h
 Copyright: 2008, Novell, Inc
            2011-2015, Red Hat, Inc
            2006-2008, Soren Sandmann <sandmann@daimi.au.dk>
@@ -71,14 +53,9 @@ Files: panels/common/locarchive.h
 Copyright: 2002, Free Software Foundation, Inc
 License: LGPL-2.1+
 
-Files: panels/datetime/backward
-Copyright: No copyright claimed
-License: public-domain
- This file is in the public domain, so clarified as of
- 2009-05-17 by Arthur David Olson.
-
 Files: debian/*
 Copyright: 2014, Maximiliano Curia <maxy@debian.org>
+           2015-2024, Debian Cinnamon Team <debian-cinnamon@lists.debian.org>
 License: GPL-2+
 
 License: Expat

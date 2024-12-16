@@ -327,6 +327,7 @@ net_device_get_valid_connections (NetDevice *device)
         filtered = nm_device_filter_connections (net_device_get_nm_device (device), all);
 
         active_connection = nm_device_get_active_connection (net_device_get_nm_device (device));
+
         active_uuid = active_connection ? nm_active_connection_get_uuid (active_connection) : NULL;
 
         valid = NULL;

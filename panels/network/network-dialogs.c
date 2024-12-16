@@ -23,6 +23,7 @@
 #include <NetworkManager.h>
 #include <nma-wifi-dialog.h>
 #include <nma-mobile-wizard.h>
+#include <nma-mobile-providers.h>
 
 #include "network-dialogs.h"
 
@@ -337,14 +338,13 @@ cdma_mobile_wizard_done (NMAMobileWizard *wizard,
 		              NULL);
 		nm_connection_add_setting (connection, setting);
 
-		/* Serial setting */
-		setting = nm_setting_serial_new ();
-		g_object_set (setting,
-		              NM_SETTING_SERIAL_BAUD, 115200,
-		              NM_SETTING_SERIAL_BITS, 8,
-		              NM_SETTING_SERIAL_PARITY, 'n',
-		              NM_SETTING_SERIAL_STOPBITS, 1,
-		              NULL);
+		/* Default to IPv4 & IPv6 'automatic' addressing */
+		setting = nm_setting_ip4_config_new ();
+		g_object_set (setting, NM_SETTING_IP_CONFIG_METHOD, NM_SETTING_IP4_CONFIG_METHOD_AUTO, NULL);
+		nm_connection_add_setting (connection, setting);
+
+		setting = nm_setting_ip6_config_new ();
+		g_object_set (setting, NM_SETTING_IP_CONFIG_METHOD, NM_SETTING_IP6_CONFIG_METHOD_AUTO, NULL);
 		nm_connection_add_setting (connection, setting);
 
 		nm_connection_add_setting (connection, nm_setting_ppp_new ());
@@ -400,14 +400,13 @@ gsm_mobile_wizard_done (NMAMobileWizard *wizard,
 		              NULL);
 		nm_connection_add_setting (connection, setting);
 
-		/* Serial setting */
-		setting = nm_setting_serial_new ();
-		g_object_set (setting,
-		              NM_SETTING_SERIAL_BAUD, 115200,
-		              NM_SETTING_SERIAL_BITS, 8,
-		              NM_SETTING_SERIAL_PARITY, 'n',
-		              NM_SETTING_SERIAL_STOPBITS, 1,
-		              NULL);
+		/* Default to IPv4 & IPv6 'automatic' addressing */
+		setting = nm_setting_ip4_config_new ();
+		g_object_set (setting, NM_SETTING_IP_CONFIG_METHOD, NM_SETTING_IP4_CONFIG_METHOD_AUTO, NULL);
+		nm_connection_add_setting (connection, setting);
+
+		setting = nm_setting_ip6_config_new ();
+		g_object_set (setting, NM_SETTING_IP_CONFIG_METHOD, NM_SETTING_IP6_CONFIG_METHOD_AUTO, NULL);
 		nm_connection_add_setting (connection, setting);
 
 		nm_connection_add_setting (connection, nm_setting_ppp_new ());
@@ -473,6 +472,10 @@ cc_network_panel_connect_to_3g_network (GtkWidget        *toplevel,
         closure = g_slice_new (MobileDialogClosure);
         closure->client = g_object_ref (client);
         closure->device = g_object_ref (device);
+
+        g_type_ensure (NMA_TYPE_COUNTRY_INFO);
+        g_type_ensure (NMA_TYPE_MOBILE_ACCESS_METHOD);
+        g_type_ensure (NMA_TYPE_MOBILE_PROVIDER);
 
 	caps = nm_device_modem_get_current_capabilities (NM_DEVICE_MODEM (device));
 	if (caps & NM_DEVICE_MODEM_CAPABILITY_GSM_UMTS) {

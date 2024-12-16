@@ -47,10 +47,6 @@
 #include <libmm-glib.h>
 #endif
 
-#ifdef HAVE_NMA_18
-#include <nma-cert-chooser.h>
-#endif
-
 CC_PANEL_REGISTER (CcNetworkPanel, cc_network_panel)
 
 #define NETWORK_PANEL_PRIVATE(o) \
@@ -228,9 +224,9 @@ cc_network_panel_dispose (GObject *object)
                 g_cancellable_cancel (priv->cancellable);
 
         g_clear_object (&priv->cancellable);
-        g_clear_object (&priv->builder);
         g_clear_object (&priv->client);
         g_clear_object (&priv->modem_manager);
+        g_clear_object (&priv->builder);
 
         G_OBJECT_CLASS (cc_network_panel_parent_class)->dispose (object);
 }
@@ -1244,12 +1240,6 @@ cc_network_panel_init (CcNetworkPanel *panel)
                 return;
         }
 
-#ifdef HAVE_NMA_18
-        /* some newer VPN plugins pre-require internal resources from libnma */
-        /* this solution is really ugly, but works clean */
-        gtk_widget_destroy (nma_cert_chooser_new ("dummy", NMA_CERT_CHOOSER_FLAG_NONE));
-#endif
-
         panel->priv->cancellable = g_cancellable_new ();
 
         panel->priv->treeview = GTK_WIDGET (gtk_builder_get_object (panel->priv->builder,
@@ -1357,7 +1347,7 @@ void
 cc_network_panel_register (GIOModule *module)
 {
         textdomain (GETTEXT_PACKAGE);
-        bindtextdomain (GETTEXT_PACKAGE, "/usr/share/locale");
+        bindtextdomain (GETTEXT_PACKAGE, LOCALE_DIR);
         bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
         cc_network_panel_register_type (G_TYPE_MODULE (module));
         g_io_extension_point_implement (CC_SHELL_PANEL_EXTENSION_POINT,
